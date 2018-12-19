@@ -1,0 +1,4 @@
+exclude:
+- src/org/fruct/yar/project/files/**
+classpath:
+- /opt/lib/maven.jar

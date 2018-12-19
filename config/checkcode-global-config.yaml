@@ -1,0 +1,7 @@
+extensions:
+- java
+tests:
+    - test: java %{classpath} -jar %{base}/tools/checkstyle-6.11.2-all.jar -c %{base}/config/checkstyle_config.xml %{file}
+      check: "Starting audit...\nAudit done.\n"
+    - test: "%{base}/tools/pmd/bin/run.sh pmd -d %{file} -f text -R %{base}/config/pmd-config.xml"
+      check: ""
