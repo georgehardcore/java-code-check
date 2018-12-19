@@ -1,13 +1,13 @@
 #! /usr/bin/env python
 # -*- encoding: utf-8 -*-
 
+import os.path as path
 import os
 import git
 
 # Config
 
-
-repo_root = "C:/altyn-android/"
+repo_root = path.abspath(path.join(__file__ ,"../../..")) + "/"
 repo = git.Repo.init(repo_root)
 
 checkstyle_jar = repo.config_reader().get_value("checkstyle", "jar")
