@@ -100,8 +100,8 @@ for source_file in file_list:
         # Print Checkstyle details
         checkRegexp = re.compile(r'\.java:')
         messages = [checkRegexp.split(m)[-1] for m in err.output.decode().splitlines() if checkRegexp.search(m) is not None]
-    for m in messages:
-        print(' => ' + style_details + m + style_reset)
+        for m in messages:
+            print(' => ' + style_details + m + style_reset)
 
 # Decisions
 if failed_checks == 0:
