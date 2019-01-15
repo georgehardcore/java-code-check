@@ -68,8 +68,7 @@
     <!-- See http://checkstyle.sf.net/config_duplicates.html -->
 
 
-    <!-- Checks for absence of new line at the end of file -->
-    <module name="NewlineAtEndOfFile"/>
+
 
     <module name="SuppressWithNearbyCommentFilter"/>
     <!--    <module name="SuppressionFilter">
