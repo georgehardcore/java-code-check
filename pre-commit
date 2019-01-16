@@ -80,6 +80,17 @@ if min_date_of_first_commit is not None:
 # Fetch files to commit
 file_list = subprocess.check_output([git_cmd, "diff", "--cached", "--name-only", "--diff-filter=ACM"])
 file_list = [f for f in file_list.splitlines() if f.endswith(b'.java')]
+subprocess.check_output([git_cmd, "add", '.'], shell=True)
+
+exclude_config = open(repo_root + 'codecheck-config', 'r') 
+exclude_files = exclude_config.read().splitlines()
+
+def is_skip_file(file, exclude_files):
+    for exclude_file in exclude_files:
+        if file.decode().startswith(exclude_file):
+            return True
+    return False
+
 
 # Run Checkstyle
 def first_commit_before_date(source_file, dt):
@@ -95,7 +106,8 @@ for source_file in file_list:
     if min_date_of_first_commit is not None and first_commit_before_date(source_file, min_date_of_first_commit):
         print('Checkstyle: ' + source_file + style_warn + ' SKIPPED (too old)' + style_reset)
         continue 
-
+    if is_skip_file(source_file, exclude_files):
+        continue
     try:     
         subprocess.check_output([java_cmd, '-jar', checkstyle_jar, '-c', checkstyle_cfg, (repo_root + source_file.decode())], shell=True)
         print('Checkstyle: ' + source_file.decode() + style_ok + ' OK' + style_reset)
@@ -115,6 +127,9 @@ for source_file in file_list:
     if min_date_of_first_commit is not None and first_commit_before_date(source_file, min_date_of_first_commit):
         print('PMD: ' + source_file + style_warn + ' SKIPPED (too old)' + style_reset)
         continue 
+
+    if is_skip_file(source_file, exclude_files):
+        continue
 
     try:
        

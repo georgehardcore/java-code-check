@@ -59,7 +59,12 @@
     <rule ref="category/java/design.xml/ExcessiveClassLength" />
     <rule ref="category/java/design.xml/CyclomaticComplexity" />
     <rule ref="category/java/design.xml/ExcessivePublicCount" />
-    <rule ref="category/java/design.xml/TooManyFields" />
+    <rule ref="category/java/design.xml/TooManyFields">
+        <properties>
+            <property name="maxfields" value="30" />
+        </properties>
+    </rule>
+
     <rule ref="category/java/design.xml/TooManyMethods">
         <properties>
             <property name="maxmethods" value="40" />
@@ -115,7 +120,6 @@
     <rule ref="category/java/bestpractices.xml/PreserveStackTrace" />
     <rule ref="category/java/bestpractices.xml/UseCollectionIsEmpty" />
     <rule ref="category/java/design.xml/ClassWithOnlyPrivateConstructorsShouldBeFinal" />
-    <rule ref="category/java/codestyle.xml/EmptyMethodInAbstractClassShouldBeAbstract" />
     <rule ref="category/java/design.xml/SingularField" />
     <rule ref="category/java/errorprone.xml/ReturnEmptyArrayRatherThanNull" />
     <rule ref="category/java/design.xml/AbstractClassWithoutAnyMethod" />
