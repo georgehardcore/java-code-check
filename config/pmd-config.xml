@@ -158,7 +158,6 @@
     <rule ref="category/java/errorprone.xml/AvoidFieldNameMatchingMethodName" />
     <rule ref="category/java/codestyle.xml/NoPackage" />
     <rule ref="category/java/codestyle.xml/PackageCase" />
-    <rule ref="category/java/codestyle.xml/GenericsNaming" />
 
     <!-- Some base optimization considerations -->
     <rule ref="category/java/codestyle.xml/PrematureDeclaration" />
