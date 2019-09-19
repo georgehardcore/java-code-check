@@ -7,6 +7,7 @@ import git
 import re
 import subprocess 
 import sys
+import functools
 
 # Config
 #Repository
@@ -24,6 +25,8 @@ ktconfig = repo.config_reader().get_value("checkstyle", "ktconfig");
 
 java_cmd = "java"
 git_cmd = "git"
+
+print = functools.partial(print, flush=True)
 
 # Init
 
